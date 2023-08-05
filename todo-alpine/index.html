@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.js"></script>
+        <script src="index.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body x-data="todoList">
+        <h1>To-do List</h1>
+        <button @click="sort">Sort by unfinished</button>
+        <div>
+            <ul>
+                <template x-for="item in items" :key="item.id">
+                    <li>
+                        <div x-show="!item.editing">
+                            <button title="Delete" @click="remove(item)" class="small">❌</button>
+                            <button title="Edit" @click="edit(item)" class="small">✏️</button>
+                            <label>
+                                <input type="checkbox" x-model="item.done">
+                                <span :class="item.done && 'done'" x-text="item.name"></span>
+                            </label>
+                        </div>
+                        <div x-show="item.editing">
+                            <input x-model="item.editingName">
+                            <button title="Apply" class="small" @click="save(item)">✅</button>
+                            <button title="Cancel" class="small" @click="cancel(item)">❌</button>
+                        </div>
+                    </li>
+                </template>
+            </ul>
+            <form>
+                <label>New item:<input x-model="toAdd"></label>
+                <button @click.prevent="add">Add</button>
+            </form>
+        </div>
+
+    </body>
+</html>
