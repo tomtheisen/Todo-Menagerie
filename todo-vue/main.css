@@ -1,0 +1,19 @@
+body {
+  margin: 3em;
+  color: black;
+  background-color: white;
+  font-size: 18pt;
+}
+
+.done {
+  color: #999;
+}
+
+button, input, textarea {
+  font-size: 1em;
+  margin: 0 0.3em;
+}
+
+.small {
+  font-size: 70%;
+}
